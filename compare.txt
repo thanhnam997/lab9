@@ -1,0 +1,10 @@
+UI building: Vue's ability to build interfaces is easy and Vanilla JavaScript will use components. More difficult, manipulate the DOM directly
+Data Binding System:vue is automatic, two-way and Vanilla JavaScript is Manual, one-way
+State Management:vue is Vuex and  JavaScript   Self-implemented
+Performance:vue Good uses Virtual DOM and Vanilla JavaScript Can be affected by DOM manipulation
+Extensibility:vue is Extensive, with many libraries and  Vanilla JavaScriptMore complex, library selection and integration
+Learning Curve: Vue is	Easy to learn and  Vanilla JavaScript	is More Difficult
+I prefer to use VUE because a big or complicated app that will be of a one-page type.
+It is a framework where there an easy and well-written guidelines.
+With data binding, routing, and state management as my built-in features, I take care of them first.
+I highly appreciate your community and cultural institution including an array of libraries and programs.
