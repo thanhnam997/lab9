@@ -44,7 +44,7 @@
             <div id="student-table">
                 <table class="table">
                     <thead>
-                        <th class="align-middle">
+                        <tr class="align-middle">
                             <th>Name</th>
                             <th>StarID</th>
                             <th>Present?</th>
@@ -57,7 +57,7 @@
                             <td>{{ student.name }}</td>
                             <td>{{ student.starID }}</td>
                             <td>
-                                <input type="checkbox" v-model="student.present">
+                                <input type="checkbox" v-model="student.present" @change="arrivedOrLeft(student)">
                                 <span class="mx-3" v-if="student.present">Here!</span>
                                 <span class="mx-3" v-else>Not present</span>
                             </td>
@@ -69,7 +69,14 @@
         </div>
 
         <div id="welcome-or-goodbye-message" class="m-2">
-            <!-- Show a message when student arrives or leaves -->
+            <div v-if="mostRecentStudent.name">
+                <div v-if="mostRecentStudent.present" class="alert alert-success">
+                    Welcome, {{ mostRecentStudent.name }}!
+                </div>
+                <div v-else class="alert alert-info">
+                    Goodbye, {{ mostRecentStudent.name }}. See you later!
+                </div>
+            </div>
         </div>
 
     </div>
@@ -87,6 +94,7 @@
                 ]);
 
                 const formErrors = ref([]);
+                const mostRecentStudent = ref({});
 
                 const addStudent = () => {
                     formErrors.value = []; // Reset formErrors
@@ -116,13 +124,19 @@
                     studentList.value.splice(index, 1);
                 };
 
+                const arrivedOrLeft = (student) => {
+                    mostRecentStudent.value = student;
+                };
+
                 return {
                     newStudentName,
                     newStarID,
                     studentList,
+                    formErrors,
+                    mostRecentStudent,
                     addStudent,
                     deleteStudent,
-                    formErrors
+                    arrivedOrLeft
                 };
             }
         }).mount('#app');
